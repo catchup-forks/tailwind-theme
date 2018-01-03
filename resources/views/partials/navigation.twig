@@ -2,10 +2,11 @@
     <div class="flex-grow bg-grey-light pt-2 ">
         {% for section in navigation('acp.main') %}
             <div class="pt-2 pb-3 mb-4 relative dropdown hover:bg-grey-darkest">
-                <a class="flex flex-col items-center" href="#">
+                <a class="flex flex-col items-center" href="#" onclick="return false;">
                     <i class="dropdown-hover:text-white text-grey my-2 fa-2x fa fa-{{ section.icon ?: 'circle-o' }}"></i>
                     <span class="dropdown-hover:text-white text-grey-darker text-xs font-bold uppercase ">{{ section.title }}</span>
                 </a>
+                {% if section.sections|length  %}
                 <div class="hidden w-48 ml-24 pin-t bg-grey-darkest h-auto absolute pl-5 pt-5 pb-8 dropdown-content z-10 text-xs ">
                     {% for page in section.sections %}
                         <div class="pb-8">
@@ -26,6 +27,7 @@
                         </div>
                     {% endfor %}
                 </div>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
