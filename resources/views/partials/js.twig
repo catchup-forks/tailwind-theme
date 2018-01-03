@@ -1,0 +1,66 @@
+<script src="http://localhost:8080/public/js/app.js"></script>
+
+{#<script>#}
+    {#$(function () {#}
+
+        {#$("body").on("submit", "form.ajax", function (e) {#}
+            {#let form = $(this);#}
+            {#alert("aok");#}
+            {#$.post(form.attr("action"), form.serializeArray(), function (data) {#}
+
+                {#if (!data.success) {#}
+                    {#messages = [];#}
+                    {#$.each(data.errors, function (field, errors) {#}
+                        {#messages.push(errors.join("\n"));#}
+                    {#});#}
+                    {#alert(messages.join("\n"));#}
+
+                    {#return false;#}
+                {#}#}
+
+                {#alert("success");#}
+                {#return false;#}
+            {#}, "json");#}
+            {#e.preventDefault();#}
+        {#});#}
+
+        {#$("a.btn.remote").on("click", function (e) {#}
+            {#$.get($(this).attr("href")).then(function () {#}
+                {#console.log("remote ok");#}
+            {#});#}
+
+            {#e.preventDefault();#}
+        {#});#}
+
+        {#// $("[data-hover=\"tooltip\"]").tooltip();#}
+
+        {#// Initialize confirm buttons.#}
+        {#$("[data-toggle=\"confirm\"]").click(function (e) {#}
+
+            {#let href = $(this).attr("href");#}
+            {#e.preventDefault();#}
+
+            {#bootbox.confirm({#}
+                {#title: "Please Confirm",#}
+                {#className: $(this).data("target"),#}
+                {#message: $(this).data("message"),#}
+                {#callback: function (result) {#}
+                    {#if (result) {#}
+                        {#document.location.href = href;#}
+                    {#}#}
+                {#},#}
+                {#buttons: {#}
+                    {#confirm: {#}
+                        {#label: "Yes",#}
+                        {#className: "btn btn-outline"#}
+                    {#},#}
+                    {#cancel: {#}
+                        {#label: "Close",#}
+                        {#className: "btn btn-outline pull-left"#}
+                    {#}#}
+                {#},#}
+            {#});#}
+        {#});#}
+
+    {#});#}
+{#</script>#}

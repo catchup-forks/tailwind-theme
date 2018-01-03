@@ -1,0 +1,135 @@
+{% extends "port::layouts/default" %}
+
+{% block content %}
+
+
+    <div class="m-portlet m-portlet--tab">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+    										<span class="m-portlet__head-icon m--hide">
+    											<i class="la la-gear"></i>
+    										</span>
+                    <h3 class="m-portlet__head-text">
+                        Input Sizing
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <!--begin::Form-->
+        <form class="m-form m-form--fit m-form--label-align-right">
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group m--margin-top-10">
+                    <div class="alert m-alert m-alert--default" role="alert">
+                        Set heights using classes like
+                        <code>
+                            .form-control-lg
+                        </code>
+                        , and set widths using grid column classes like
+                        <code>
+                            .col-lg-*
+                        </code>
+                    </div>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">
+                        Large Input
+                    </label>
+                    <input type="email" class="form-control form-control-lg m-input" id="exampleInputEmail1"
+                           aria-describedby="emailHelp" placeholder="Large input">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">
+                        Default Input
+                    </label>
+                    <input type="email" class="form-control m-input" id="exampleInputEmail1"
+                           aria-describedby="emailHelp" placeholder="Large input">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleInputEmail1">
+                        Small Input
+                    </label>
+                    <input type="email" class="form-control form-control-sm m-input" id="exampleInputEmail1"
+                           aria-describedby="emailHelp" placeholder="Large input">
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleSelect1">
+                        Large Select
+                    </label>
+                    <select class="form-control m-input form-control-lg" id="exampleSelect1">
+                        <option>
+                            1
+                        </option>
+                        <option>
+                            2
+                        </option>
+                        <option>
+                            3
+                        </option>
+                        <option>
+                            4
+                        </option>
+                        <option>
+                            5
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleSelect1">
+                        Default Select
+                    </label>
+                    <select class="form-control m-input" id="exampleSelect1">
+                        <option>
+                            1
+                        </option>
+                        <option>
+                            2
+                        </option>
+                        <option>
+                            3
+                        </option>
+                        <option>
+                            4
+                        </option>
+                        <option>
+                            5
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group m-form__group">
+                    <label for="exampleSelect1">
+                        Small Select
+                    </label>
+                    <select class="form-control m-input form-control-sm" id="exampleSelect1">
+                        <option>
+                            1
+                        </option>
+                        <option>
+                            2
+                        </option>
+                        <option>
+                            3
+                        </option>
+                        <option>
+                            4
+                        </option>
+                        <option>
+                            5
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                    <button type="reset" class="btn btn-accent">
+                        Submit
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!--end::Form-->
+    </div>
+{% endblock %}

@@ -1,0 +1,23 @@
+<h3 class="control-sidebar-heading">Tasks Progress</h3>
+<ul class="control-sidebar-menu" id="tasks">
+    {% for task in tasks().get() %}
+        <li id="">
+            <a href="#" onclick="$("#status"{{ task.id }}").slideToggle(); return false;">
+                {{ task.statusLabel('', 'task_' ~ task.id, task.title) |raw }}
+            </a>
+            {% set subtasks = task.getSubtasks() %}
+
+            {% if subtasks %}
+                <div class="subtasks" id="status_{{ task.id }}">
+                    {% for subtask in subtasks %}
+                        {{ subtask.statusLabel('',  'subtask_' ~ subtask.id, subtask.title) |raw }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="progress progress-xxs hidden">
+                <div class="progress-bar progress-bar-green" style="width: {{ task.progress }};"></div>
+            </div>
+        </li>
+    {% endfor %}
+</ul>

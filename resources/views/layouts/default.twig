@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>SuperV</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/themes/tailwind/">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="stylesheet" href="/themes/global/css/toastr.css">
+    <link rel="stylesheet" href="/themes/global/fonts/lato/lato.css">
+    <link rel="stylesheet" href="/themes/global/element/theme-chalk/index.css">
+    <link rel="stylesheet" href="/themes/global/css/superv.css?v={{ random() }}">
+
+    <script src="https://use.fontawesome.com/b5ab651074.js"></script>
+</head>
+
+<body class="font-sans li">
+    <div class="h-screen flex flex-col">
+        <div class="flex bg-grey-darkest h-16">
+            <div class="w-24 flex  justify-center">
+                {% include 'port::svg/logo' %}
+            </div>
+            <div class="flex flex-1 justify-between items-center">
+                {% include 'port::partials/top-nav' %}
+            </div>
+        </div>
+        <div class="flex flex-1 ">
+            {% include 'port::partials/navigation' %}
+
+            <div class="flex-1 flex flex-col">
+                <div class=" bg-white flex justify-between px-6 py-4">
+                    <h2 class="text-grey-darkest font-medium">Menus: Edit</h2>
+                    <div>
+                        <a href="#"
+                           class="inline-block text-xs text-blue border border-blue bg-light hover:bg-blue-light hover:text-white px-3 py-2 ">Save</a>
+                        <a href="#"
+                           class="inline-block text-xs text-blue border border-blue bg-light hover:bg-blue-light hover:text-white px-3 py-2 ">Close</a>
+                    </div>
+                </div>
+                <div class="flex-grow bg-grey-lighter px-6 py-6">
+                        {% block content %}{% endblock %}
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    {% include 'port::partials/js' %}
+    {#{% include 'port::partials/modals' %}#}
+
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

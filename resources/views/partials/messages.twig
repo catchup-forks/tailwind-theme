@@ -1,0 +1,46 @@
+<!-- Success Messages -->
+{% if session_has('success') %}
+    <div class="alert alert-dismissible alert-success fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+        {% for message in session_get('success') %}
+            {{ message }}
+        {% endfor %}
+        {{ session_get('success') }}
+    </div>
+{% endif %}
+
+<!-- Informational Messages -->
+{% if session_has('info') %}
+    <div class="alert alert-dismissible alert-info">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        {% for message in session_get('info') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Warning Messages -->
+{% if session_has('warning') %}
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        {% for message in session_get('warning') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Error Messages -->
+{% if session_has('error') %}
+    <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+        {% for message in session_get('error') %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}

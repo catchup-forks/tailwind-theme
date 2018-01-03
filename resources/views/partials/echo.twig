@@ -1,0 +1,90 @@
+<script src="/js/app.js?v=4"></script>
+<script>
+    Echo.private("App.User.3")
+        .listen("WarningEvent", (e) => {
+            toastr.warning(e.message);
+        })
+        .listen("SomeEvent", (e) => {
+            toastr.info(e.message);
+        })
+        .notification((notification) => {
+            toastr.success(notification.message);
+        });
+
+
+    Echo.channel("Tasks")
+        .listen(".task.created", (e) => {
+            let task = e.model;
+            $("#tasks").prepend(
+                "<li >" +
+                "<a href=\"#\">" +
+                "<span id=\"task_" + task.id + "\" class=\"label label-info\">" +
+                "<i class=\"fa fa-clock-o\"></i> <span> " + task.title + "</span>" +
+                " </span>" +
+                " <div class=\"subtasks\" id=\"status_" + task.id + "\">" +
+                "  </div>" +
+                "<div class=\"progress progress-xxs hidden\">\n" +
+                "  <div class=\"progress-bar progress-bar-danger\" style=\"width: 70%;\"></div>\n" +
+                "</div></a>" +
+                "</li>"
+            );
+
+            $.AdminLTE.controlSidebar.open();
+        })
+        .listen(".subtask.created", (e) => {
+            let subtask = e.model;
+            let status = $("#status_" + subtask.parent_id);
+            let label = $(e.label);
+            label.attr("id", "subtask_" + subtask.id);
+            label.find("span").html(subtask.title);
+            status.append(label);
+        })
+        .listen(".subtask.status", (e) => {
+            let subtask = e.model;
+            let label = $("#subtask_" + subtask.id);
+
+            let newlabel = $(e.label);
+            newlabel.attr("id", "subtask_" + subtask.id);
+            newlabel.find("span").html(subtask.title);
+
+            label.replaceWith(newlabel);
+        })
+        .listen(".task.status", (e) => {
+            let task = e.model;
+            let label = $("#task_" + task.id);
+
+            let newlabel = $(e.label);
+            newlabel.attr("id", "task_" + task.id);
+            newlabel.find("span").html(task.title);
+            label.replaceWith(newlabel);
+
+            if (task.status === 1) {
+                $("#output").css("height", 400).css("opacity", 0.8);
+                $.AdminLTE.controlSidebar.open();
+                $("#status_" + task.id).slideDown();
+            } else if (task.status === 2) {
+                setTimeout(function () {
+                    $("#status_" + task.id).slideUp();
+                }, 3000);
+            }
+
+        })
+        .listen(".task.output", (e) => {
+            $("#output").append(e.buffer);
+            $("#output").scrollTop($("#output").prop("scrollHeight"));
+        });
+</script>
+<div id="console" style="position: fixed;
+             bottom: 50px;
+             left: 260px;
+             width: 900px;
+             ">
+             <pre id="output" style="position: relative;
+             width: 100%;
+             opacity: 0.2;
+                          overflow: auto;
+
+             background-color: rgba(51,51,51,0.82);
+             color: rgba(137,213,102,0.82);
+              padding: 10px"></pre>
+</div>

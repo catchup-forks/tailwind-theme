@@ -1,0 +1,16 @@
+.nav {
+    @apply .flex;
+}
+
+.nav-item {
+    @apply .uppercase .text-sm .mr-8 .py-6 .text-red-light;
+    @apply .no-underline;
+
+    &:last-child {
+        @apply  .mr-0
+      }
+}
+
+.nav-item--active {
+    @apply .text-red-dark .border-b .border-red
+}

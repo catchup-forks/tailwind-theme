@@ -1,0 +1,18 @@
+@tailwind preflight;
+a {
+    @apply .no-underline;
+}
+
+.tab-active {
+    border-bottom: 1px white;
+    background-color: white !important;
+    color: black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-hover\:text-white {
+    @apply .text-white;
+}
