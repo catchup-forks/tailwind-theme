@@ -8,13 +8,14 @@
     <base href="/themes/tailwind/">
     <link rel="stylesheet" href="css/styles.css">
 
+    <link rel="stylesheet" href="fontawesome/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="/themes/global/element/theme-chalk/index.css">
     <link rel="stylesheet" href="/themes/global/css/toastr.css">
     <link rel="stylesheet" href="/themes/global/fonts/lato/lato.css">
 
     <link rel="stylesheet" href="/themes/global/css/superv.css?v={{ random() }}">
 
-    <script src="https://use.fontawesome.com/b5ab651074.js"></script>
+    <!-- <script src="https://use.fontawesome.com/b5ab651074.js"></script> -->
 </head>
 
 <body class="font-sans">
@@ -28,21 +29,18 @@
             </div>
         </div>
         <div class="flex flex-1 ">
-            {% include 'port::partials/navigation' %}
+            <div class="w-24 md:flex flex-col flex-no-shrink hidden ">
+                {% include 'port::partials/navigation' %}
+            </div>
 
-            <div class="flex-1 flex">
+            <div class="flex-1 flex ">
                 {% block content %}{% endblock %}
             </div>
 
         </div>
-
-
     </div>
 
-    {% include 'port::partials/js' %}
-    {#{% include 'port::partials/modals' %}#}
-
-    {% block scripts %}{% endblock %}
+    {% include 'port::partials/js' %} {#{% include 'port::partials/modals' %}#} {% block scripts %}{% endblock %}
 </body>
 
 </html>

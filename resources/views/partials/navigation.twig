@@ -1,34 +1,31 @@
-<div class="w-24 flex flex-col ">
-    <div class="flex-grow bg-grey-light pt-2 ">
-        {% for section in navigation('acp.main') %}
-            <div class="pt-2 pb-3 mb-4 relative dropdown hover:bg-grey-darkest">
-                <a class="flex flex-col items-center" href="#" onclick="return false;">
-                    <i class="dropdown-hover:text-white text-grey my-2 fa-2x fa fa-{{ section.icon ?: 'circle-o' }}"></i>
-                    <span class="dropdown-hover:text-white text-grey-darker text-xs font-bold uppercase ">{{ section.title }}</span>
+<div class="flex-grow bg-grey-light pt-2 ">
+    {% for section in navigation('acp.main') %}
+    <div class="pt-2 pb-3 mb-4 relative dropdown hover:bg-grey-darkest">
+        <a class="flex flex-col items-center" href="#" onclick="return false;">
+            <i class="dropdown-hover:text-white text-grey my-2 fa-2x fa fa-{{ section.icon ?: 'superpowers' }}"></i>
+            <span class="dropdown-hover:text-white text-grey-darker text-xs font-bold uppercase ">{{ section.title }}</span>
+        </a>
+        {% if section.sections|length %}
+        <div class="hidden w-48 ml-24 pin-t bg-grey-darkest h-auto absolute pl-5 pt-5 pb-8 dropdown-content z-10 text-xs ">
+            {% for page in section.sections %}
+            <div class="pb-8">
+                <a class="block text-white font-bold mb-2 uppercase border-b border-grey-darker mr-4 pb-1" href="{{ page.url ? url(page.url) : '' }}">
+                    {{ page.title }}
                 </a>
-                {% if section.sections|length  %}
-                <div class="hidden w-48 ml-24 pin-t bg-grey-darkest h-auto absolute pl-5 pt-5 pb-8 dropdown-content z-10 text-xs ">
-                    {% for page in section.sections %}
-                        <div class="pb-8">
-                            <a class="block text-white font-bold mb-2 uppercase border-b border-grey-darker mr-4"
-                               href="{{ page.url ? url(page.url) : '' }}">
-                                {{ page.title }}
-                            </a>
-                            {% if page.sections %}
-                                <div class="pl-px">
-                                    {% for page in page.sections %}
+                {% if page.sections %}
+                <div class="pl-px">
+                    {% for page in page.sections %}
 
-                                        <a class="block text-grey-light text-xs mb-2" href="{{ url(page.url) }}">
-                                            <i class="fa-sm fa fa-{{ page.icon ?: 'circle-o' }}"></i>
-                                            {{ page.title }}</a>
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                        </div>
+                    <a class="super-link block text-grey-light text-xs mb-2" href="{{ url(page.url) }}">
+                        <i class="w-3 fa-sm fa fa-{{ page.icon ?: 'circle' }}"></i>
+                        {{ page.title }}</a>
                     {% endfor %}
                 </div>
                 {% endif %}
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
+    {% endfor %}
 </div>
