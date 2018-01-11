@@ -1,4 +1,6 @@
-<script src="http://localhost:8080/public/js/app.js"></script>
+{#<script src="http://localhost:8080/public/js/app.js"></script>#}
+{{ asset_add('app.js', 'superv.modules.ui::src/spa.js') }}
+{{ asset_script('app.js')|raw }}
 
 {#<script>#}
     {#$(function () {#}

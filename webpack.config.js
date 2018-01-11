@@ -2,11 +2,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
 
 module.exports = {
-  entry: './resources/js/main.js',
+  entry: './resources/tailwind/js/main.js',
   output: {
-    path: path.resolve(__dirname, "./public/css"),
-    publicPath: "/public/css/",
-    filename: "styles.css"
+    path: path.resolve(__dirname, "./resources/css"),
+    filename: "tailwind.css"
   },
   module: {
     rules: [{
@@ -25,6 +24,6 @@ module.exports = {
     }, ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('tailwind.css')
   ]
 }

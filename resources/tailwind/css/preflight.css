@@ -3,6 +3,10 @@ a {
     @apply .no-underline;
 }
 
+.appearance-none {
+    -webkit-appearance: none;
+}
+
 .tab-active {
     border-bottom: 1px white;
     background-color: white !important;
@@ -11,6 +15,10 @@ a {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.dropdown-content:click {
+    @action toggle-class("active");
 }
 
 .dropdown:hover .dropdown-hover\:text-white {

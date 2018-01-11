@@ -1,7 +1,7 @@
-<div class="flex-grow bg-grey-light pt-2 ">
+<div class="flex-grow bg-grey-light ">
     {% for section in navigation('acp.main') %}
     <div class="pt-2 pb-3 mb-4 relative dropdown hover:bg-grey-darkest">
-        <a class="flex flex-col items-center" href="#" onclick="return false;">
+        <a class="flex flex-col items-center" href="{{ section.url ? url(section.url) : '' }}">
             <i class="dropdown-hover:text-white text-grey my-2 fa-2x fa fa-{{ section.icon ?: 'superpowers' }}"></i>
             <span class="dropdown-hover:text-white text-grey-darker text-xs font-bold uppercase ">{{ section.title }}</span>
         </a>

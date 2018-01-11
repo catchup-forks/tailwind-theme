@@ -3,6 +3,6 @@ module.exports = {
     [
       require('postcss-import'),
       require('postcss-cssnext'),
-      require('tailwindcss')('./resources/js/tailwind.js'),
+      require('tailwindcss')('./resources/tailwind/js/tailwind.js'),
     ]
 }

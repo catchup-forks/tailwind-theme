@@ -2,57 +2,51 @@
 <html lang="en">
 
 <head>
-    <title>SuperV</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <base href="/themes/tailwind/">
-
-    <link rel="stylesheet" href="css/styles.css">
-
-    <link rel="stylesheet" href="/themes/global/css/toastr.css">
-    <link rel="stylesheet" href="/themes/global/fonts/lato/lato.css">
-    <link rel="stylesheet" href="/themes/global/element/theme-chalk/index.css">
-    <link rel="stylesheet" href="/themes/global/css/superv.css?v={{ random() }}">
-
-    <script src="https://use.fontawesome.com/b5ab651074.js"></script>
+    {% include 'theme::partials/metadata' %}
 </head>
 
-<body class="font-sans li">
-    <div class="h-screen flex flex-col">
+<body class="font-sans">
+    <div class="flex flex-col min-h-screen" id="app">
         <div class="flex bg-grey-darkest h-16">
             <div class="w-24 flex  justify-center">
-                {% include 'port::svg/logo' %}
+                {% include 'theme::svg/logo' %}
             </div>
             <div class="flex flex-1 justify-between items-center">
-                {% include 'port::partials/top-nav' %}
+                {% include 'theme::partials/top-nav' %}
             </div>
         </div>
-        <div class="flex flex-1 ">
-            {% include 'port::partials/navigation' %}
+        <div class="flex flex-grow ">
+            <div class="w-24 md:flex flex-col flex-no-shrink hidden ">
+                {% include 'theme::partials/navigation' %}
+            </div>
 
-            <div class="flex-1 flex flex-col">
-                <div class=" bg-white flex justify-between px-6 py-4">
-                    <h2 class="text-grey-darkest font-medium">Menus: Edit</h2>
-                    <div>
-                        <a href="#"
-                           class="inline-block text-xs text-blue border border-blue bg-light hover:bg-blue-light hover:text-white px-3 py-2 ">Save</a>
-                        <a href="#"
-                           class="inline-block text-xs text-blue border border-blue bg-light hover:bg-blue-light hover:text-white px-3 py-2 ">Close</a>
+            <div class="flex-1 flex flex-col ">
+                {% block content %}{% endblock %}
+
+                <div class="bg-white border-t">
+                    <div class="container mx-auto px-4">
+                        <div class="md:flex justify-between items-center text-sm py-4">
+                            <p>© 2018 SuperV 0.92 s | 16 mb 0.0.1</p>
+                            <div class="relative">
+                                <select class="leading-tight w-full border border-grey-light block appearance-none px-4 py-1 pr-8">
+                                    <option>English</option>
+                                    <option>Türkçe</option>
+                                    <option>Deutsch</option>
+                                </select>
+                                <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-grow bg-grey-lighter px-6 py-6">
-                        {% block content %}{% endblock %}
-                </div>
             </div>
 
         </div>
-
-
     </div>
-
-    {% include 'port::partials/js' %}
-    {#{% include 'port::partials/modals' %}#}
-
+    {% include 'theme::partials/js' %}
     {% block scripts %}{% endblock %}
 </body>
 

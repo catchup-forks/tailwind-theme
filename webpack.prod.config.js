@@ -15,11 +15,10 @@ class TailwindExtractor {
 }
 
 module.exports = {
-  entry: './resources/js/main.js',
+  entry: './resources/tailwind/js/main.js',
   output: {
-    path: path.resolve(__dirname, "./public/css"),
-    publicPath: "/public/css/",
-    filename: "styles.css"
+    path: path.resolve(__dirname, "./resources/css"),
+    filename: "tailwind.css"
   },
   module: {
     rules: [{
@@ -38,14 +37,15 @@ module.exports = {
     }, ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('tailwind.css'),
     new PurgecssPlugin({
       paths: glob.sync([
-        path.join(__dirname, "public/*.html")
+        path.join(__dirname, "resources/views/*.twig"),
+        path.join(__dirname, "resources/views/*/*.twig"),
       ]),
       extractors: [{
         extractor: TailwindExtractor,
-        extensions: ["html", "js", "php", "vue"]
+        extensions: ["twig", "html", "js", "php", "vue"]
       }]
     })
   ]
